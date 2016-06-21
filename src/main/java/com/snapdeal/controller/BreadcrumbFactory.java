@@ -5,14 +5,9 @@ import com.snapdeal.model.GenericModel;
 
 public class BreadcrumbFactory {
 
-	// TOASK: would it be better to create parent model.
-	// product model and category model would inherit from parent model
-	// and then we don't need 2 methods getBreadcrumbs
 	public static Breadcrumb getBreadcrumbs(final GenericModel productModel, String path){
 		if (productModel.getName() == null || productModel.getName().isEmpty() || path == null
 				|| path.isEmpty()) {
-			// TOASK:if i have an exception i don't need log right?
-			// TOASK:what kind of exception should be thrown here?
 			throw new NullPointerException("product name or path is null");
 		} else {
 			return new Breadcrumb(productModel.getName(), path);

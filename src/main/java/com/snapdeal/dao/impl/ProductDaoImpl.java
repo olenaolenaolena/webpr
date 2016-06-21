@@ -66,8 +66,6 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Integer> implements 
 		Query query = getSession().createQuery(
 				"select numOfStarRatingVotes from " + this.daoType.getSimpleName() + " where product_id = :param1");
 		query.setParameter("param1", productId);
-		// TOASK: is it worth doing try catch for class cast exception here?
-		// this exception will arise if in bd wrong value is stored
 		Integer i = (Integer) query.uniqueResult();
 		return i;
 	}
@@ -79,21 +77,4 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Integer> implements 
 		 product.setNumOfStarRatingVotes(numOfStarRatingVotes);
 		 getSession().update(product);
 	}
-
-	/*
-	 * ((Integer) getSession().createQuery("select count(*) from "
-	 * +this.daoType.getName() + "INNER JOIN Category"
-	 * ).uniqueResult()).intValue();
-	 * 
-	 * "from Product where category.categoryName = 'phones'";
-	 */
-
-	/*
-	 * @SuppressWarnings("unchecked") public List<Product>
-	 * getProductsByPriceRange(BigDecimal low, BigDecimal high) { return
-	 * (List<Product>)
-	 * super.getEntityManager().createNamedQuery("Product.getByPriceRange")
-	 * .setParameter("low", low).setParameter("high", high).getResultList(); }
-	 */
-
 }
