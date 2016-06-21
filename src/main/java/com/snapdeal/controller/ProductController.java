@@ -65,8 +65,6 @@ public class ProductController extends AbstractPageController {
 			return "product";
 		}
 
-		// TOASK: is it better to pass just productID or make a product?
-		// Product product = productService.read(Integer.parseInt(productId));
 		productService.setStarRating(starRating, Integer.valueOf(productId));
 		return "redirect:/products/{productId}";
 
